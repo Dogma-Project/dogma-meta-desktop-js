@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { AppContext, WebsocketContext } from "../../context";
+import { AppContext, ApiContext } from "../../context";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import IconButton from "@mui/material/IconButton";
@@ -21,7 +21,7 @@ type color =
 
 function Services() {
   const { state } = useContext(AppContext);
-  const { send } = useContext(WebsocketContext);
+  const { send } = useContext(ApiContext);
 
   useEffect(() => {
     send({

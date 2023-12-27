@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { AppContext, WebsocketContext } from "../context";
+import { AppContext, ApiContext } from "../context";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -15,7 +15,7 @@ import LocalStorage from "../helpers/localStorage";
 
 function SetPrefix() {
   const { dispatch } = useContext(AppContext);
-  const { manager, isReady } = useContext(WebsocketContext);
+  const { manager } = useContext(ApiContext);
 
   const st = new LocalStorage("");
 
@@ -62,7 +62,7 @@ function SetPrefix() {
         }
       }
     );
-  }, [isReady]);
+  }, []);
 
   return (
     <Box

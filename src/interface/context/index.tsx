@@ -1,5 +1,5 @@
 import { AppContext, AppContextProvider } from "./app-context";
-import { WebsocketContext, ApiProvider } from "./api-context";
+import { ApiContext, ApiProvider } from "./api-context";
 
-export { AppContext, WebsocketContext };
+export { AppContext, ApiContext };
 export { AppContextProvider, ApiProvider };

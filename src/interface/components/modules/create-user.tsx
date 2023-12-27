@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { C_Keys, C_Defaults, C_API } from "@dogma-project/constants-meta";
 
-import { WebsocketContext } from "../../context";
+import { ApiContext } from "../../context";
 
 import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
@@ -24,32 +24,28 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 function CreateUser() {
-  const { isReady, send } = useContext(WebsocketContext);
+  const { send } = useContext(ApiContext);
   const [keyLength, setKeyLength] = useState(4096); // edit
   const [userName, setUserName] = useState(C_Defaults.userName);
   const [variant, setVariant] = useState(1);
   const [file, setFile] = useState<File | null>(null);
 
   const saveValue = () => {
-    if (isReady) {
-      send({
-        type: C_API.ApiRequestType.keys,
-        action:
-          variant === 1
-            ? C_API.ApiRequestAction.set
-            : C_API.ApiRequestAction.push,
-        payload:
-          variant === 1
-            ? {
-                name: userName,
-                length: keyLength,
-                type: C_Keys.Type.userKey,
-              }
-            : file,
-      });
-    } else {
-      console.warn("WS not ready");
-    }
+    send({
+      type: C_API.ApiRequestType.keys,
+      action:
+        variant === 1
+          ? C_API.ApiRequestAction.set
+          : C_API.ApiRequestAction.push,
+      payload:
+        variant === 1
+          ? {
+              name: userName,
+              length: keyLength,
+              type: C_Keys.Type.userKey,
+            }
+          : file,
+    });
   };
 
   const onImport = (e: React.ChangeEvent<HTMLInputElement>) => {

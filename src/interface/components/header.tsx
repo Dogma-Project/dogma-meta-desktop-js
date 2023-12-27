@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useContext, useState } from "react";
 import { C_API } from "@dogma-project/constants-meta";
-import { AppContext, WebsocketContext } from "../context";
+import { AppContext, ApiContext } from "../context";
 
 function AppHeader({
   handleDrawerToggle,
@@ -21,7 +21,7 @@ function AppHeader({
     dispatch,
   } = useContext(AppContext);
 
-  const { manager } = useContext(WebsocketContext);
+  const { manager } = useContext(ApiContext);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 

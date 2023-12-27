@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import { useContext, useEffect, useState } from "react";
-import { AppContext, WebsocketContext } from "../../../context";
+import { AppContext, ApiContext } from "../../../context";
 import { C_API } from "@dogma-project/constants-meta";
 import Paper from "@mui/material/Paper";
 
@@ -22,7 +22,7 @@ export default function ExportKeyModal(props: {
   const {
     state: { prefix },
   } = useContext(AppContext);
-  const { request } = useContext(WebsocketContext);
+  const { request } = useContext(ApiContext);
   const [blob, setBlob] = useState("");
 
   useEffect(() => {

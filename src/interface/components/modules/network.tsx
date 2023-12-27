@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AppContext, WebsocketContext } from "../../context";
+import { AppContext, ApiContext } from "../../context";
 import { C_API } from "@dogma-project/constants-meta";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -24,7 +24,7 @@ function Network() {
   const {
     state: { network },
   } = useContext(AppContext);
-  const { isReady, send } = useContext(WebsocketContext);
+  const { send } = useContext(ApiContext);
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -34,13 +34,11 @@ function Network() {
     };
 
   useEffect(() => {
-    if (isReady) {
-      send({
-        type: C_API.ApiRequestType.network,
-        action: C_API.ApiRequestAction.get,
-      });
-    }
-  }, [isReady]);
+    send({
+      type: C_API.ApiRequestType.network,
+      action: C_API.ApiRequestAction.get,
+    });
+  }, []);
 
   return (
     <>

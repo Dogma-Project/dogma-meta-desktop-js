@@ -6,7 +6,7 @@ import {
   C_API,
 } from "@dogma-project/constants-meta";
 
-import { AppContext, WebsocketContext } from "../../context";
+import { AppContext, ApiContext } from "../../context";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import SettingsRouter from "./settings-parts/router";
@@ -17,7 +17,7 @@ import SaveCardAction from "./parts/save-card-action";
 import LocalStorage from "../../helpers/localStorage";
 
 export default function SettingsPage() {
-  const { isReady, request } = useContext(WebsocketContext);
+  const { request } = useContext(ApiContext);
   const {
     state: { prefix },
   } = useContext(AppContext);
@@ -49,33 +49,31 @@ export default function SettingsPage() {
   };
 
   const saveValue = () => {
-    if (isReady) {
-      const params: Configs = {
-        [C_Event.Type.configRouter]: router,
-        [C_Event.Type.configDhtAnnounce]: dhtAnnounce,
-        [C_Event.Type.configDhtLookup]: dhtLookup,
-        [C_Event.Type.configDhtBootstrap]: dhtBootstrap,
-        [C_Event.Type.configLocalDiscovery]: localDiscovery,
-        [C_Event.Type.configAutoDefine]: autoDefine,
-        [C_Event.Type.configExternal]: external || C_Defaults.external,
-      };
-      request(
-        {
-          type: C_API.ApiRequestType.settings,
-          action: C_API.ApiRequestAction.set,
-          payload: params,
-        },
-        (result) => {
-          console.log("SETTINGS", result);
-          st.set("settings-router", router);
-          st.set("settings-dhtAnnounce", dhtAnnounce);
-          st.set("settings-dhtLookup", dhtLookup);
-          st.set("settings-dhtBootstrap", dhtBootstrap);
-          st.set("settings-localDiscovery", localDiscovery);
-          st.set("settings-autoDefine", autoDefine);
-        }
-      );
-    }
+    const params: Configs = {
+      [C_Event.Type.configRouter]: router,
+      [C_Event.Type.configDhtAnnounce]: dhtAnnounce,
+      [C_Event.Type.configDhtLookup]: dhtLookup,
+      [C_Event.Type.configDhtBootstrap]: dhtBootstrap,
+      [C_Event.Type.configLocalDiscovery]: localDiscovery,
+      [C_Event.Type.configAutoDefine]: autoDefine,
+      [C_Event.Type.configExternal]: external || C_Defaults.external,
+    };
+    request(
+      {
+        type: C_API.ApiRequestType.settings,
+        action: C_API.ApiRequestAction.set,
+        payload: params,
+      },
+      (result) => {
+        console.log("SETTINGS", result);
+        st.set("settings-router", router);
+        st.set("settings-dhtAnnounce", dhtAnnounce);
+        st.set("settings-dhtLookup", dhtLookup);
+        st.set("settings-dhtBootstrap", dhtBootstrap);
+        st.set("settings-localDiscovery", localDiscovery);
+        st.set("settings-autoDefine", autoDefine);
+      }
+    );
   };
 
   useEffect(() => {

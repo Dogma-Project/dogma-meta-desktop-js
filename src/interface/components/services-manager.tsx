@@ -3,38 +3,23 @@ import { AppContext } from "../context";
 import AppLayout from "./app-layout";
 import InitLayout from "./init-layout";
 import { C_API, C_Event } from "@dogma-project/constants-meta";
-import { WebsocketContext } from "../context/api-context";
+import { ApiContext } from "../context/api-context";
 
 function ServicesManager() {
   const {
     state: { services },
     dispatch,
   } = useContext(AppContext);
-  const { isReady, value, send } = useContext(WebsocketContext);
+  const { value, send } = useContext(ApiContext);
 
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
-    if (isReady) {
-      send({
-        type: C_API.ApiRequestType.services,
-        action: C_API.ApiRequestAction.get,
-      });
-      dispatch({
-        type: C_API.ApiRequestAction.set,
-        value: {
-          busy: false,
-        },
-      });
-    } else {
-      dispatch({
-        type: C_API.ApiRequestAction.set,
-        value: {
-          busy: true,
-        },
-      });
-    }
-  }, [isReady]);
+    send({
+      type: C_API.ApiRequestType.services,
+      action: C_API.ApiRequestAction.get,
+    });
+  }, []);
 
   useEffect(() => {
     if (value) {

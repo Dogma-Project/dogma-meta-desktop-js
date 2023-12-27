@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { C_Keys, C_Defaults, C_API } from "@dogma-project/constants-meta";
 
-import { WebsocketContext } from "../../context";
+import { ApiContext } from "../../context";
 
 import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
@@ -15,24 +15,20 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
 function CreateNode() {
-  const { isReady, send } = useContext(WebsocketContext);
+  const { send } = useContext(ApiContext);
   const [keyLength, setKeyLength] = useState(2048); // edit
   const [nodeName, setNodeName] = useState(C_Defaults.nodeName);
 
   const saveValue = () => {
-    if (isReady) {
-      send({
-        type: C_API.ApiRequestType.keys,
-        action: C_API.ApiRequestAction.set,
-        payload: {
-          name: nodeName,
-          length: keyLength,
-          type: C_Keys.Type.nodeKey,
-        },
-      });
-    } else {
-      console.warn("WS not ready");
-    }
+    send({
+      type: C_API.ApiRequestType.keys,
+      action: C_API.ApiRequestAction.set,
+      payload: {
+        name: nodeName,
+        length: keyLength,
+        type: C_Keys.Type.nodeKey,
+      },
+    });
   };
 
   return (
