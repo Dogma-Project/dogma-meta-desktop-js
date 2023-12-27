@@ -44,7 +44,9 @@ function CreateUser() {
               length: keyLength,
               type: C_Keys.Type.userKey,
             }
-          : file,
+          : {
+              path: file.path,
+            },
     });
   };
 

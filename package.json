@@ -1,7 +1,7 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@dogma-project/constants-meta": "^0.8.7",
-    "@dogma-project/core-meta": "^0.8.30",
+    "@dogma-project/core-meta": "^0.8.31",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
@@ -55,7 +55,7 @@
     "@mui/material": "^5.14.20",
     "@mui/styled-engine-sc": "^6.0.0-alpha.7",
     "@types/electron-squirrel-startup": "^1.0.2",
-    "@types/node": "^18.13.0",
+    "@types/node": "^20.10.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
