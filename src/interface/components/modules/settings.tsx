@@ -58,62 +58,56 @@ export default function SettingsPage() {
       [C_Event.Type.configAutoDefine]: autoDefine,
       [C_Event.Type.configExternal]: external || C_Defaults.external,
     };
-    request(
-      {
-        type: C_API.ApiRequestType.settings,
-        action: C_API.ApiRequestAction.set,
-        payload: params,
-      },
-      (result) => {
-        console.log("SETTINGS", result);
-        st.set("settings-router", router);
-        st.set("settings-dhtAnnounce", dhtAnnounce);
-        st.set("settings-dhtLookup", dhtLookup);
-        st.set("settings-dhtBootstrap", dhtBootstrap);
-        st.set("settings-localDiscovery", localDiscovery);
-        st.set("settings-autoDefine", autoDefine);
-      }
-    );
+    request({
+      type: C_API.ApiRequestType.settings,
+      action: C_API.ApiRequestAction.set,
+      payload: params,
+    }).then((result) => {
+      console.log("SETTINGS", result);
+      st.set("settings-router", router);
+      st.set("settings-dhtAnnounce", dhtAnnounce);
+      st.set("settings-dhtLookup", dhtLookup);
+      st.set("settings-dhtBootstrap", dhtBootstrap);
+      st.set("settings-localDiscovery", localDiscovery);
+      st.set("settings-autoDefine", autoDefine);
+    });
   };
 
   useEffect(() => {
-    request(
-      {
-        type: C_API.ApiRequestType.settings,
-        action: C_API.ApiRequestAction.get,
-      },
-      (result) => {
-        const object = result.payload.settings as Configs;
-        if (object[C_Event.Type.configRouter] !== undefined) {
-          const val = Number(object[C_Event.Type.configRouter]);
-          setRouter(val);
-        }
-        if (object[C_Event.Type.configDhtAnnounce] !== undefined) {
-          const val = Number(object[C_Event.Type.configDhtAnnounce]);
-          setDhtAnnounce(val);
-        }
-        if (object[C_Event.Type.configDhtLookup] !== undefined) {
-          const val = Number(object[C_Event.Type.configDhtLookup]);
-          setDhtLookup(val);
-        }
-        if (object[C_Event.Type.configDhtBootstrap] !== undefined) {
-          const val = Number(object[C_Event.Type.configDhtBootstrap]);
-          setDhtBootstrap(val);
-        }
-        if (object[C_Event.Type.configLocalDiscovery] !== undefined) {
-          const val = !!object[C_Event.Type.configLocalDiscovery];
-          setLocalDiscovery(val);
-        }
-        if (object[C_Event.Type.configAutoDefine] !== undefined) {
-          const val = !!object[C_Event.Type.configAutoDefine];
-          setAutoDefine(val);
-        }
-        if (object[C_Event.Type.configExternal] !== undefined) {
-          const val = (object[C_Event.Type.configExternal] as string) || "";
-          setExternal(val);
-        }
+    request({
+      type: C_API.ApiRequestType.settings,
+      action: C_API.ApiRequestAction.get,
+    }).then((result) => {
+      const object = result.payload.settings as Configs;
+      if (object[C_Event.Type.configRouter] !== undefined) {
+        const val = Number(object[C_Event.Type.configRouter]);
+        setRouter(val);
       }
-    );
+      if (object[C_Event.Type.configDhtAnnounce] !== undefined) {
+        const val = Number(object[C_Event.Type.configDhtAnnounce]);
+        setDhtAnnounce(val);
+      }
+      if (object[C_Event.Type.configDhtLookup] !== undefined) {
+        const val = Number(object[C_Event.Type.configDhtLookup]);
+        setDhtLookup(val);
+      }
+      if (object[C_Event.Type.configDhtBootstrap] !== undefined) {
+        const val = Number(object[C_Event.Type.configDhtBootstrap]);
+        setDhtBootstrap(val);
+      }
+      if (object[C_Event.Type.configLocalDiscovery] !== undefined) {
+        const val = !!object[C_Event.Type.configLocalDiscovery];
+        setLocalDiscovery(val);
+      }
+      if (object[C_Event.Type.configAutoDefine] !== undefined) {
+        const val = !!object[C_Event.Type.configAutoDefine];
+        setAutoDefine(val);
+      }
+      if (object[C_Event.Type.configExternal] !== undefined) {
+        const val = (object[C_Event.Type.configExternal] as string) || "";
+        setExternal(val);
+      }
+    });
   }, []);
 
   return (

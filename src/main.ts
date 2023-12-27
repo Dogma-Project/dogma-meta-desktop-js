@@ -2,6 +2,7 @@ import { app, BrowserWindow } from "electron";
 import path from "path";
 import squirrel from "electron-squirrel-startup";
 import ManagerApi from "./core/manager";
+import Api from "./core/api";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (squirrel) {
@@ -10,7 +11,6 @@ if (squirrel) {
 
 const createWindow = () => {
   // Create the browser window.
-  ManagerApi();
   const mainWindow = new BrowserWindow({
     width: 1024,
     height: 768,
@@ -18,6 +18,9 @@ const createWindow = () => {
       preload: path.join(__dirname, "preload.js"),
     },
   });
+
+  ManagerApi(mainWindow);
+  Api();
 
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {

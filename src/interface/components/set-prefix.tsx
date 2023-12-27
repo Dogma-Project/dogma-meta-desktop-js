@@ -27,41 +27,35 @@ function SetPrefix() {
     const final = prefix && prefix.length ? prefix : value;
     // if value empty return
     st.set("prefix-name", final);
-    manager(
-      {
-        type: C_API.ApiRequestType.prefix,
-        action: C_API.ApiRequestAction.set,
-        payload: {
+    manager({
+      type: C_API.ApiRequestType.prefix,
+      action: C_API.ApiRequestAction.set,
+      payload: {
+        prefix: final,
+      },
+    }).then(() => {
+      dispatch({
+        type: C_API.ApiRequestAction.set,
+        value: {
           prefix: final,
         },
-      },
-      () => {
-        dispatch({
-          type: C_API.ApiRequestAction.set,
-          value: {
-            prefix: final,
-          },
-        });
-      }
-    );
+      });
+    });
   };
 
   useEffect(() => {
-    manager(
-      {
-        type: C_API.ApiRequestType.prefixes,
-        action: C_API.ApiRequestAction.get,
-      },
-      (res) => {
-        setPrefixes(res.payload || []);
-        const last = st.get("prefix-name", "default");
-        if (res.payload.indexOf(last) > -1) {
-          setPrefix(last);
-        } else {
-          setValue(last);
-        }
+    manager({
+      type: C_API.ApiRequestType.prefixes,
+      action: C_API.ApiRequestAction.get,
+    }).then((res) => {
+      setPrefixes(res.payload || []);
+      const last = st.get("prefix-name", "default");
+      if (res.payload.indexOf(last) > -1) {
+        setPrefix(last);
+      } else {
+        setValue(last);
       }
-    );
+    });
   }, []);
 
   return (

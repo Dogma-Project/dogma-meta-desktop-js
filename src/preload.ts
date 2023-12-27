@@ -1,11 +1,10 @@
 import { API } from "@dogma-project/core-meta/types/types";
 import { contextBridge, ipcRenderer } from "electron";
+import { RequestParams } from "./core/api";
 
 export interface ElectronApi {
-  send: (params: Omit<API.Request, "id">) => void;
-  request: (
-    params: Omit<API.Request, "id">
-  ) => Promise<Omit<API.Response, "id">>;
+  send: (params: RequestParams) => void;
+  request: (params: RequestParams) => Promise<Omit<API.Response, "id">>;
   manager: (
     params: Omit<API.Request, "id">
   ) => Promise<Omit<API.Response, "id">>;

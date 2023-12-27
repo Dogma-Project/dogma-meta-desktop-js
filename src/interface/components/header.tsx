@@ -35,23 +35,20 @@ function AppHeader({
 
   const logOut = () => {
     setAnchorEl(null);
-    manager(
-      {
-        type: C_API.ApiRequestType.prefix,
-        action: C_API.ApiRequestAction.delete,
-        payload: {
-          prefix,
-        },
+    manager({
+      type: C_API.ApiRequestType.prefix,
+      action: C_API.ApiRequestAction.delete,
+      payload: {
+        prefix,
       },
-      () => {
-        dispatch({
-          type: C_API.ApiRequestAction.set,
-          value: {
-            prefix: "",
-          },
-        });
-      }
-    );
+    }).then(() => {
+      dispatch({
+        type: C_API.ApiRequestAction.set,
+        value: {
+          prefix: "",
+        },
+      });
+    });
   };
 
   return (

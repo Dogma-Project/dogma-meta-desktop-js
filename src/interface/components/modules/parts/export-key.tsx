@@ -26,20 +26,17 @@ export default function ExportKeyModal(props: {
   const [blob, setBlob] = useState("");
 
   useEffect(() => {
-    request(
-      {
-        type: C_API.ApiRequestType.keys,
-        action: C_API.ApiRequestAction.get,
-      },
-      (res) => {
-        if (res.payload && res.payload.length) {
-          const file = new Blob([res.payload], {
-            type: "text/plain;charset=utf-8",
-          });
-          setBlob(URL.createObjectURL(file));
-        }
+    request({
+      type: C_API.ApiRequestType.keys,
+      action: C_API.ApiRequestAction.get,
+    }).then((res) => {
+      if (res.payload && res.payload.length) {
+        const file = new Blob([res.payload], {
+          type: "text/plain;charset=utf-8",
+        });
+        setBlob(URL.createObjectURL(file));
       }
-    );
+    });
   }, []);
 
   const getFileName = () => {

@@ -1,7 +1,7 @@
 {
-  "name": "dogma-meta-desktop",
-  "productName": "dogma-meta-desktop",
-  "version": "0.5.2",
+  "name": "@dogma-project/desktop-meta",
+  "productName": "Dogma Meta",
+  "version": "0.7.3",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
@@ -11,17 +11,38 @@
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx ."
   },
-  "keywords": [],
-  "author": "main",
+  "author": {
+    "name": "Rotegott",
+    "email": "rotegott@dogma-project.org",
+    "url": "https://dogma-project.org/"
+  },
+  "homepage": "https://meta.dogma-project.org/",
+  "keywords": [
+    "dogma",
+    "dogma meta",
+    "dogma-desktop",
+    "decentralization",
+    "p2p"
+  ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dogma-Project/dogma-meta-desktop-js"
+  },
+  "bugs": {
+    "url": "https://github.com/Dogma-Project/dogma-meta-desktop-js/issues",
+    "email": "rotegott@dogma-project.org"
+  },
   "dependencies": {
     "@dogma-project/constants-meta": "^0.8.7",
-    "@dogma-project/core-meta": "^0.8.29",
+    "@dogma-project/core-meta": "^0.8.30",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",
     "@electron-forge/maker-deb": "^7.2.0",
+    "@electron-forge/maker-flatpak": "^7.2.0",
+    "@electron-forge/maker-pkg": "^7.2.0",
     "@electron-forge/maker-rpm": "^7.2.0",
     "@electron-forge/maker-squirrel": "^7.2.0",
     "@electron-forge/maker-zip": "^7.2.0",

@@ -5,13 +5,11 @@ type ContextType = {
   value: API.Response | null;
   send: (params: Omit<API.Request, "id">) => void;
   request: (
-    params: Omit<API.Request, "id">,
-    cb: (response: Omit<API.Response, "id">) => void
-  ) => void;
+    params: Omit<API.Request, "id">
+  ) => Promise<Omit<API.Response, "id">>;
   manager: (
-    params: Omit<API.Request, "id">,
-    cb: (response: Omit<API.Response, "id">) => void
-  ) => void;
+    params: Omit<API.Request, "id">
+  ) => Promise<Omit<API.Response, "id">>;
 };
 
 export const ApiContext = createContext<ContextType>({
@@ -33,19 +31,15 @@ export const ApiProvider = (props: {
     });
   }, []);
 
-  const obj = {
+  const obj: ContextType = {
     value,
-    send: (params: Omit<API.Request, "id">) => {
-      window.api.send(params);
+    send: (params) => {
+      window.api.send({ prefix: props.prefix, data: params });
     },
-    request: (
-      params: Omit<API.Request, "id">
-    ): Promise<Omit<API.Response, "id">> => {
-      return window.api.request(params);
+    request: (params) => {
+      return window.api.request({ prefix: props.prefix, data: params });
     },
-    manager: (
-      params: Omit<API.Request, "id">
-    ): Promise<Omit<API.Response, "id">> => {
+    manager: (params) => {
       return window.api.manager(params);
     },
   };

@@ -20,30 +20,24 @@ export default function User() {
   } = useContext(AppContext);
 
   useEffect(() => {
-    request(
-      {
-        type: C_API.ApiRequestType.node,
-        action: C_API.ApiRequestAction.get,
-      },
-      (result) => {
-        dispatch({
-          type: C_API.ApiRequestAction.set,
-          value: { node: result.payload },
-        });
-      }
-    );
-    request(
-      {
-        type: C_API.ApiRequestType.user,
-        action: C_API.ApiRequestAction.get,
-      },
-      (result) => {
-        dispatch({
-          type: C_API.ApiRequestAction.set,
-          value: { user: result.payload },
-        });
-      }
-    );
+    request({
+      type: C_API.ApiRequestType.node,
+      action: C_API.ApiRequestAction.get,
+    }).then((result) => {
+      dispatch({
+        type: C_API.ApiRequestAction.set,
+        value: { node: result.payload },
+      });
+    });
+    request({
+      type: C_API.ApiRequestType.user,
+      action: C_API.ApiRequestAction.get,
+    }).then((result) => {
+      dispatch({
+        type: C_API.ApiRequestAction.set,
+        value: { user: result.payload },
+      });
+    });
   }, []);
 
   return (
