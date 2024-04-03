@@ -5,6 +5,7 @@ import Services from "./modules/services";
 import Settings from "./modules/settings";
 import About from "./modules/about";
 import User from "./modules/user";
+import AddFriend from "./modules/add-friend";
 
 const router = createHashRouter(
   [
@@ -31,6 +32,10 @@ const router = createHashRouter(
     {
       path: "/user",
       element: <User />,
+    },
+    {
+      path: "/friendship",
+      element: <AddFriend />,
     },
   ],
   {}

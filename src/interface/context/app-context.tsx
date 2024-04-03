@@ -4,14 +4,9 @@ import {
   User,
   Node,
   Event,
-  System,
 } from "@dogma-project/core-meta/declarations/types";
 
-import {
-  C_API,
-  C_Event,
-  C_System,
-} from "@dogma-project/core-meta/src/constants";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 
 class AppState {
   prefix: string = "";

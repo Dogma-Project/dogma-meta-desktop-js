@@ -1,5 +1,5 @@
+import { contextBridge, ipcRenderer, clipboard } from "electron";
 import { API } from "@dogma-project/core-meta/declarations/types";
-import { contextBridge, ipcRenderer } from "electron";
 import { RequestParams } from "./core/api";
 
 export interface ElectronApi {
@@ -11,11 +11,15 @@ export interface ElectronApi {
   listen: (listener: (response: Omit<API.Response, "id">) => void) => void;
 }
 
-declare global {
-  interface Window {
-    api: ElectronApi;
-  }
-}
+const system = {
+  clipboard: {
+    copy: (text: string) => {
+      console.log("COPY", text);
+      navigator.clipboard.writeText(text); // edit
+      // clipboard.writeText(text, "clipboard");
+    },
+  },
+};
 
 const api: ElectronApi = {
   send: (params) => {
@@ -34,4 +38,12 @@ const api: ElectronApi = {
   },
 };
 
+declare global {
+  interface Window {
+    api: ElectronApi;
+    system: typeof system;
+  }
+}
+
 contextBridge.exposeInMainWorld("api", api);
+contextBridge.exposeInMainWorld("system", system);

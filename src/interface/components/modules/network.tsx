@@ -46,7 +46,11 @@ function Network() {
         elevation={3}
         sx={{ px: 1, py: 2, display: "flex", justifyContent: "center" }}
       >
-        <Button variant="contained" startIcon={<PersonAddAltRoundedIcon />}>
+        <Button
+          href="#/friendship"
+          variant="contained"
+          startIcon={<PersonAddAltRoundedIcon />}
+        >
           New friend
         </Button>
       </Paper>

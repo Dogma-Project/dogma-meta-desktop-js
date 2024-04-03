@@ -1,7 +1,7 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.8.1",
+  "version": "0.8.3",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
