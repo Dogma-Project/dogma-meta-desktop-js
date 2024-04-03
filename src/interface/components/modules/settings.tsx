@@ -4,7 +4,8 @@ import {
   C_Event,
   C_Defaults,
   C_API,
-} from "@dogma-project/constants-meta";
+} from "@dogma-project/core-meta/src/constants";
+import { Event } from "@dogma-project/core-meta/declarations/types";
 
 import { AppContext, ApiContext } from "../../context";
 import Typography from "@mui/material/Typography";
@@ -45,7 +46,7 @@ export default function SettingsPage() {
   const [external, setExternal] = useState("");
 
   type Configs = {
-    [key in C_Event.Type.Config]?: string | boolean | number;
+    [key in Event.Type.Config]?: string | boolean | number;
   };
 
   const saveValue = () => {

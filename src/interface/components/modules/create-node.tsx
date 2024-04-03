@@ -1,5 +1,9 @@
 import { useContext, useState } from "react";
-import { C_Keys, C_Defaults, C_API } from "@dogma-project/constants-meta";
+import {
+  C_Keys,
+  C_Defaults,
+  C_API,
+} from "@dogma-project/core-meta/src/constants";
 
 import { ApiContext } from "../../context";
 
@@ -17,7 +21,7 @@ import MenuItem from "@mui/material/MenuItem";
 function CreateNode() {
   const { send } = useContext(ApiContext);
   const [keyLength, setKeyLength] = useState(2048); // edit
-  const [nodeName, setNodeName] = useState(C_Defaults.nodeName);
+  const [nodeName, setNodeName] = useState<string>(C_Defaults.nodeName);
 
   const saveValue = () => {
     send({

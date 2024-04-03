@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useContext, useState } from "react";
-import { C_API } from "@dogma-project/constants-meta";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 import { AppContext, ApiContext } from "../context";
 
 function AppHeader({

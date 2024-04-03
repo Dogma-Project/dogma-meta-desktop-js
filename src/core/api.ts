@@ -1,4 +1,4 @@
-import { API } from "@dogma-project/core-meta/types/types";
+import { API } from "@dogma-project/core-meta/declarations/types";
 import { instances } from "./index";
 import { ipcMain } from "electron";
 

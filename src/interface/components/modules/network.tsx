@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext, ApiContext } from "../../context";
-import { C_API } from "@dogma-project/constants-meta";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";

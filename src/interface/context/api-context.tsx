@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { API } from "@dogma-project/core-meta/types/types";
+import { API } from "@dogma-project/core-meta/declarations/types";
 
 type ContextType = {
   value: API.Response | null;

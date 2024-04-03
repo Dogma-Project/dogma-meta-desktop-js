@@ -1,4 +1,4 @@
-import { API } from "@dogma-project/core-meta/types/types";
+import { API } from "@dogma-project/core-meta/declarations/types";
 import { contextBridge, ipcRenderer } from "electron";
 import { RequestParams } from "./core/api";
 

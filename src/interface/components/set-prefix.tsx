@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import InitScreenActions from "./modules/parts/init-screen-actions";
-import { C_API } from "@dogma-project/constants-meta";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 import Box from "@mui/material/Box";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";

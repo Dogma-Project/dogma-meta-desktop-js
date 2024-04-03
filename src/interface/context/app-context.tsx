@@ -1,12 +1,23 @@
 import { createContext, useReducer } from "react";
-import { C_API, C_Event, C_System } from "@dogma-project/constants-meta";
-import { API, User, Node } from "@dogma-project/core-meta/types/types";
+import {
+  API,
+  User,
+  Node,
+  Event,
+  System,
+} from "@dogma-project/core-meta/declarations/types";
+
+import {
+  C_API,
+  C_Event,
+  C_System,
+} from "@dogma-project/core-meta/src/constants";
 
 class AppState {
   prefix: string = "";
   services: {
-    service: C_Event.Type.Service;
-    state: C_System.States;
+    service: Event.Type.Service;
+    state: Event.ServiceState;
   }[] = [];
   busy: boolean = false;
   loading: boolean = false;
@@ -17,7 +28,7 @@ class AppState {
 }
 
 type action = {
-  type: C_API.ApiRequestAction;
+  type: API.RequestAction;
   value: object;
 };
 

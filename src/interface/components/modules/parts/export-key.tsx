@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import { useContext, useEffect, useState } from "react";
 import { AppContext, ApiContext } from "../../../context";
-import { C_API } from "@dogma-project/constants-meta";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 import Paper from "@mui/material/Paper";
 
 const style = {

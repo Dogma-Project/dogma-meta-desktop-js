@@ -6,7 +6,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { AppContext, ApiContext } from "../../context";
-import { C_API } from "@dogma-project/constants-meta";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 import IconButton from "@mui/material/IconButton";
 
 import EditNoteIcon from "@mui/icons-material/EditNote";

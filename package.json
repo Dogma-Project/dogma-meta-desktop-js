@@ -1,7 +1,7 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.7.6",
+  "version": "0.8.1",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
@@ -34,8 +34,7 @@
     "email": "rotegott@dogma-project.org"
   },
   "dependencies": {
-    "@dogma-project/constants-meta": "^0.8.7",
-    "@dogma-project/core-meta": "^0.8.32",
+    "@dogma-project/core-meta": "^0.8.42",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {

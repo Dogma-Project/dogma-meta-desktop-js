@@ -4,7 +4,8 @@ import {
   C_Event,
   C_Defaults,
   C_API,
-} from "@dogma-project/constants-meta";
+} from "@dogma-project/core-meta/src/constants";
+import { Event, Connection } from "@dogma-project/core-meta/declarations/types";
 
 import { ApiContext } from "../../context";
 import Container from "@mui/material/Container";
@@ -21,21 +22,29 @@ import SettingsExternal from "./settings-parts/external";
 function CreateSettings() {
   const { send } = useContext(ApiContext);
 
-  const [router, setRouter] = useState(C_Defaults.router);
+  const [router, setRouter] = useState<number>(C_Defaults.router);
 
-  const [dhtAnnounce, setDhtAnnounce] = useState(C_Connection.Group.friends);
-  const [dhtLookup, setDhtLookup] = useState(C_Connection.Group.friends);
-  const [dhtBootstrap, setDhtBootstrap] = useState(C_Connection.Group.friends);
+  const [dhtAnnounce, setDhtAnnounce] = useState<number>(
+    C_Connection.Group.friends
+  );
+  const [dhtLookup, setDhtLookup] = useState<number>(
+    C_Connection.Group.friends
+  );
+  const [dhtBootstrap, setDhtBootstrap] = useState<number>(
+    C_Connection.Group.friends
+  );
 
-  const [localDiscovery, setLocalDiscovery] = useState(
+  const [localDiscovery, setLocalDiscovery] = useState<boolean>(
     C_Defaults.localDiscovery
   );
-  const [autoDefine, setAutoDefine] = useState(C_Defaults.autoDefineIp);
-  const [external, setExternal] = useState(C_Defaults.external);
+  const [autoDefine, setAutoDefine] = useState<boolean>(
+    C_Defaults.autoDefineIp
+  );
+  const [external, setExternal] = useState<string>(C_Defaults.external);
 
   const saveValue = () => {
     const params: {
-      [key in C_Event.Type.Config]?: string | boolean | number;
+      [key in Event.Type.Config]?: string | boolean | number;
     } = {
       [C_Event.Type.configRouter]: router,
       [C_Event.Type.configDhtAnnounce]: dhtAnnounce,

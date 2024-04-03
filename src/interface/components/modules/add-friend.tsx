@@ -6,10 +6,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import { AppContext, ApiContext } from "../../context";
-import { Types } from "@dogma-project/core-meta";
+import { C_API } from "@dogma-project/core-meta/src/constants";
 import TextField from "@mui/material/TextField";
-
-const { C_API } = Types.Constants;
 
 export default function AddFriend() {
   const [modal, setModal] = useState(false);

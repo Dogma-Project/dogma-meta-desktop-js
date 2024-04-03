@@ -2,7 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context";
 import AppLayout from "./app-layout";
 import InitLayout from "./init-layout";
-import { C_API, C_Event } from "@dogma-project/constants-meta";
+import { C_API, C_Event } from "@dogma-project/core-meta/src/constants";
+import { API } from "@dogma-project/core-meta/declarations/types";
+
 import { ApiContext } from "../context/api-context";
 
 function ServicesManager() {
@@ -27,7 +29,7 @@ function ServicesManager() {
         case C_API.ApiRequestType.services:
         case C_API.ApiRequestType.network:
           dispatch({
-            type: value.action as C_API.ApiRequestAction,
+            type: value.action as API.RequestAction,
             value: value.payload,
           });
           break;

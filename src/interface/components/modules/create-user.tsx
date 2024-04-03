@@ -1,5 +1,9 @@
 import React, { useContext, useState } from "react";
-import { C_Keys, C_Defaults, C_API } from "@dogma-project/constants-meta";
+import {
+  C_Keys,
+  C_Defaults,
+  C_API,
+} from "@dogma-project/core-meta/src/constants";
 
 import { ApiContext } from "../../context";
 
@@ -26,7 +30,7 @@ import MenuItem from "@mui/material/MenuItem";
 function CreateUser() {
   const { send } = useContext(ApiContext);
   const [keyLength, setKeyLength] = useState(4096); // edit
-  const [userName, setUserName] = useState(C_Defaults.userName);
+  const [userName, setUserName] = useState<string>(C_Defaults.userName);
   const [variant, setVariant] = useState(1);
   const [file, setFile] = useState<File | null>(null);
 

@@ -2,9 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
 
-import { C_API, C_System } from "@dogma-project/constants-meta";
-import { API } from "@dogma-project/core-meta/types/types";
-import RunWorker from "@dogma-project/core-meta";
+import { C_API, C_System } from "@dogma-project/core-meta/src/constants";
+import { API } from "@dogma-project/core-meta/declarations/types";
+import { RunWorker } from "@dogma-project/core-meta";
 import { ipcMain } from "electron";
 import { instances } from "./index";
 

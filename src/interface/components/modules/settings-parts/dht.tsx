@@ -1,4 +1,4 @@
-import { C_Connection } from "@dogma-project/constants-meta";
+import { C_Connection } from "@dogma-project/core-meta/src/constants";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
