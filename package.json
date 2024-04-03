@@ -1,7 +1,7 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
   "scripts": {
@@ -61,7 +61,7 @@
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "electron": "28.1.0",
+    "electron": "^21.4.4",
     "eslint": "^8.56.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react-hooks": "^4.6.0",

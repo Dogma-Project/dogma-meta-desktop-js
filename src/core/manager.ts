@@ -5,10 +5,10 @@ import os from "node:os";
 import { C_API, C_System } from "@dogma-project/constants-meta";
 import { API } from "@dogma-project/core-meta/types/types";
 import RunWorker from "@dogma-project/core-meta";
-import { BrowserWindow, ipcMain } from "electron";
+import { ipcMain } from "electron";
 import { instances } from "./index";
 
-export default function register(win: BrowserWindow) {
+export default function register() {
   ipcMain.handle("manager", async (event, data: Omit<API.Request, "id">) => {
     switch (data.type) {
       case C_API.ApiRequestType.prefix:
@@ -32,7 +32,7 @@ export default function register(win: BrowserWindow) {
                 loglevel: C_System.LogLevel.debug,
               });
               worker.on("notify", (payload) => {
-                win.webContents.send("api", payload);
+                global.win.webContents.send("api", payload);
               });
               worker.on("exit", () => {
                 delete instances[prefix];
