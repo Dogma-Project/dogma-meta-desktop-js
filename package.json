@@ -1,9 +1,10 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.8.3",
-  "description": "My Electron application description",
+  "version": "0.8.4",
+  "description": "Cross-platform, non-anonymous, privacy-oriented decentralized communication platform written in TypeScript",
   "main": ".vite/build/main.js",
+  "private": true,
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
