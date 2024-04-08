@@ -1,7 +1,7 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.8.4",
+  "version": "0.9.1",
   "description": "Cross-platform, non-anonymous, privacy-oriented decentralized communication platform written in TypeScript",
   "main": ".vite/build/main.js",
   "private": true,
@@ -35,7 +35,7 @@
     "email": "rotegott@dogma-project.org"
   },
   "dependencies": {
-    "@dogma-project/core-meta": "^0.8.42",
+    "@dogma-project/core-meta": "^0.9.11",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {

@@ -10,6 +10,7 @@ import { C_API } from "@dogma-project/core-meta/src/constants";
 import IconButton from "@mui/material/IconButton";
 
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import { User } from "@dogma-project/core-meta/declarations/types";
 
 export default function User() {
   const [modal, setModal] = useState(false);

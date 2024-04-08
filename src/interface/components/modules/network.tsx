@@ -19,12 +19,13 @@ import ComputerRoundedIcon from "@mui/icons-material/ComputerRounded";
 import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
+import { User } from "@dogma-project/core-meta/declarations/types";
 
 function Network() {
   const {
     state: { network },
   } = useContext(AppContext);
-  const { send } = useContext(ApiContext);
+  const { send, request } = useContext(ApiContext);
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -33,11 +34,42 @@ function Network() {
       setExpanded(isExpanded ? panel : false);
     };
 
-  useEffect(() => {
+  const updateData = () => {
     send({
       type: C_API.ApiRequestType.network,
       action: C_API.ApiRequestAction.get,
     });
+  };
+
+  const accept = (user_id: User.Id) => {
+    request({
+      type: C_API.ApiRequestType.user,
+      action: C_API.ApiRequestAction.set,
+      payload: {
+        user_id,
+        requested: false,
+      },
+    }).then((result) => {
+      console.log("RESULT", result);
+      updateData();
+    });
+  };
+
+  const decline = (user_id: User.Id) => {
+    request({
+      type: C_API.ApiRequestType.user,
+      action: C_API.ApiRequestAction.delete,
+      payload: {
+        user_id,
+      },
+    }).then((result) => {
+      console.log("RESULT", result);
+      updateData();
+    });
+  };
+
+  useEffect(() => {
+    updateData();
   }, []);
 
   return (
@@ -85,8 +117,20 @@ function Network() {
                 <AccordionDetails key={`nodebox-${i}`}>
                   <Typography>{user.id}</Typography>
                   <Stack direction="row" spacing={1}>
-                    <Button startIcon={<PersonAddAltRoundedIcon />}>Add</Button>
-                    <Button startIcon={<DoDisturbOffRoundedIcon />}>
+                    <Button
+                      onClick={() => {
+                        accept(user.id);
+                      }}
+                      startIcon={<PersonAddAltRoundedIcon />}
+                    >
+                      Add
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        decline(user.id);
+                      }}
+                      startIcon={<DoDisturbOffRoundedIcon />}
+                    >
                       Decline
                     </Button>
                     <Button
