@@ -35,7 +35,7 @@
     "email": "rotegott@dogma-project.org"
   },
   "dependencies": {
-    "@dogma-project/core-meta": "^0.9.11",
+    "@dogma-project/core-meta": "^0.9.12",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "electron": "^21.4.4",
+    "electron": "^29.2.0",
     "eslint": "^8.56.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-react-hooks": "^4.6.0",
