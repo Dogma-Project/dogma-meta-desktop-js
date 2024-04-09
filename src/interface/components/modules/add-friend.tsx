@@ -8,12 +8,13 @@ import { ApiContext } from "../../context";
 import { C_API } from "@dogma-project/core-meta/src/constants";
 
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
 
 export default function AddFriend() {
   const [cert, setCert] = useState("");
   const [friendCert, setFriendCert] = useState("");
-
   const { request } = useContext(ApiContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     request({
@@ -30,8 +31,11 @@ export default function AddFriend() {
       type: C_API.ApiRequestType.certificate,
       action: C_API.ApiRequestAction.push,
       payload: friendCert,
-    }).then((result) => {
-      console.log("SET CERT RESULT", result);
+    }).then((res) => {
+      console.log("SET CERT RESULT", res);
+      if (res && res.payload) {
+        navigate("/network");
+      }
     });
   };
   return (

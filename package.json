@@ -1,7 +1,7 @@
 {
   "name": "@dogma-project/desktop-meta",
   "productName": "Dogma Meta",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Cross-platform, non-anonymous, privacy-oriented decentralized communication platform written in TypeScript",
   "main": ".vite/build/main.js",
   "private": true,
