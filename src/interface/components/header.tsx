@@ -94,9 +94,9 @@ function AppHeader({
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem disabled onClick={handleClose}>
+            {/* <MenuItem>
               Profile
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem onClick={logOut}>Log out</MenuItem>
           </Menu>
         </div>

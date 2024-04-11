@@ -26,9 +26,9 @@ export default function LeftMenu(props: {
     <div>
       {/* <Toolbar /> */}
       <Divider />
-      <List>
+      <List onClick={click}>
         <ListItem key={"home"} disablePadding>
-          <ListItemButton href="#/" onClick={click}>
+          <ListItemButton href="#/">
             <ListItemIcon>
               <HomeRoundedIcon />
             </ListItemIcon>
@@ -36,7 +36,7 @@ export default function LeftMenu(props: {
           </ListItemButton>
         </ListItem>
         <ListItem key={"network"} disablePadding>
-          <ListItemButton href="#/network" onClick={click}>
+          <ListItemButton href="#/network">
             <ListItemIcon>
               <HubRoundedIcon />
             </ListItemIcon>
@@ -44,7 +44,7 @@ export default function LeftMenu(props: {
           </ListItemButton>
         </ListItem>
         <ListItem key={"user"} disablePadding>
-          <ListItemButton href="#/user" onClick={click}>
+          <ListItemButton href="#/user">
             <ListItemIcon>
               <ManageAccountsRoundedIcon />
             </ListItemIcon>
@@ -53,7 +53,7 @@ export default function LeftMenu(props: {
         </ListItem>
 
         <ListItem key={"chats"} disablePadding>
-          <ListItemButton href="#/chats" disabled onClick={click}>
+          <ListItemButton href="#/chats" disabled>
             <ListItemIcon>
               <ChatRoundedIcon />
             </ListItemIcon>
@@ -62,7 +62,7 @@ export default function LeftMenu(props: {
         </ListItem>
 
         <ListItem key={"storage"} disablePadding>
-          <ListItemButton href="#/storage" disabled onClick={click}>
+          <ListItemButton href="#/storage" disabled>
             <ListItemIcon>
               <SourceRoundedIcon />
             </ListItemIcon>
@@ -71,7 +71,7 @@ export default function LeftMenu(props: {
         </ListItem>
 
         <ListItem key={"mail"} disablePadding>
-          <ListItemButton href="#/mail" disabled onClick={click}>
+          <ListItemButton href="#/mail" disabled>
             <ListItemIcon>
               <MailRoundedIcon />
             </ListItemIcon>
@@ -82,7 +82,7 @@ export default function LeftMenu(props: {
       <Divider />
       <List>
         <ListItem key={"settings"} disablePadding>
-          <ListItemButton href="#/settings" onClick={click}>
+          <ListItemButton href="#/settings">
             <ListItemIcon>
               <SettingsRoundedIcon />
             </ListItemIcon>
@@ -91,7 +91,7 @@ export default function LeftMenu(props: {
         </ListItem>
 
         <ListItem key={"services"} disablePadding>
-          <ListItemButton href="#/services" onClick={click}>
+          <ListItemButton href="#/services">
             <ListItemIcon>
               <MiscellaneousServicesRoundedIcon />
             </ListItemIcon>
@@ -100,7 +100,7 @@ export default function LeftMenu(props: {
         </ListItem>
 
         <ListItem key={"about"} disablePadding>
-          <ListItemButton href="#/about" onClick={click}>
+          <ListItemButton href="#/about">
             <ListItemIcon>
               <InfoRoundedIcon />
             </ListItemIcon>

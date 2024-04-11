@@ -20,6 +20,7 @@ import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonChecke
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import { User } from "@dogma-project/core-meta/declarations/types";
+import { Link } from "@mui/material";
 
 function Network() {
   const {
@@ -103,13 +104,15 @@ function Network() {
                 id="panel3bh-header"
               >
                 <Stack direction="row" alignItems="center" gap={1}>
-                  {user.current ? (
-                    <StarsRoundedIcon color="success" />
-                  ) : user.requested ? (
-                    <QuestionMarkRoundedIcon color="warning" />
-                  ) : (
-                    <AccountCircleRoundedIcon color="info" />
-                  )}
+                  <Link href={`#/user/${user.id}`}>
+                    {user.current ? (
+                      <StarsRoundedIcon color="success" />
+                    ) : user.requested ? (
+                      <QuestionMarkRoundedIcon color="warning" />
+                    ) : (
+                      <AccountCircleRoundedIcon color="info" />
+                    )}
+                  </Link>
                   <Typography sx={{ flexGrow: 1 }}>{user.name}</Typography>
                 </Stack>
               </AccordionSummary>
